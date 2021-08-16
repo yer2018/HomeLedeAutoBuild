@@ -79,7 +79,7 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-- name: Compile the firmware
+    - name: Compile the firmware
       id: compile
       run: |
         cd openwrt
