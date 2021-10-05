@@ -15,3 +15,6 @@ sed -i '56a echo "v`date +%Y.%m.%d`" > /etc/buildmark' package/lean/default-sett
 #sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #echo '修改默认WIFI名称'
 #sed -i 's/ssid=OpenWrt/ssid=Panzy/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i '/infinityfreedom/d' feeds.conf.default
+sed -i '/homeclash/d' feeds.conf.default
+sed -i '/strongswanInDocker/d' feeds.conf.default
