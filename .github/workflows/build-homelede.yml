@@ -56,11 +56,12 @@ jobs:
       run: git clone $REPO_URL openwrt
 
     - name: Prepare feeds
-      run: cd openwrt
-           sed -i '/infinityfreedom/d' feeds.conf.default
-           sed -i '/homeclash/d' feeds.conf.default
-           sed -i '/strongswanInDocker/d' feeds.conf.default
-           ./prepareCompile.sh
+      run: |
+        cd openwrt
+        sed -i '/infinityfreedom/d' feeds.conf.default
+        sed -i '/homeclash/d' feeds.conf.default
+        sed -i '/strongswanInDocker/d' feeds.conf.default
+        ./prepareCompile.sh
 
     - name: Load custom configuration
       run: |
