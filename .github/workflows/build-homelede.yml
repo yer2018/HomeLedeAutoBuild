@@ -58,6 +58,7 @@ jobs:
     - name: Prepare feeds
       run: |
         sed -i '/subconverter/d' defconfig
+        sed -i '/subweb/d' defconfig
         cd openwrt
         sed -i '/infinityfreedom/d' feeds.conf.default
         sed -i '/homeclash/d' feeds.conf.default
