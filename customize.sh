@@ -20,3 +20,7 @@ sed -i '33a echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDs1m4Ts+ZDF0qEu0kNypyQ//
 #sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #echo '修改默认WIFI名称'
 #sed -i 's/ssid=OpenWrt/ssid=Panzy/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+# Modify network diagnostics
+sed -i '34a sed -i "s/<%=ping_host%>/www.baidu.com/g" /usr/lib/lua/luci/view/admin_network/diagnostics.htm' package/lean/default-settings/files/zzz-default-settings
+sed -i '35a sed -i "s/<%=route_host%>/www.baidu.com/g" /usr/lib/lua/luci/view/admin_network/diagnostics.htm' package/lean/default-settings/files/zzz-default-settings
+sed -i '36a sed -i "s/<%=dns_host%>/www.baidu.com/g" /usr/lib/lua/luci/view/admin_network/diagnostics.htm' package/lean/default-settings/files/zzz-default-settings
