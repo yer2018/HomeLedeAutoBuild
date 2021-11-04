@@ -57,6 +57,7 @@ jobs:
 
     - name: Prepare feeds
       run: |
+        #DIY
         sed -i '/subconverter/s/^\(.*\)$/#\1/' defconfig
         sed -i '/subweb/s/^\(.*\)$/#\1/' defconfig
         #disable ipv6
@@ -65,6 +66,13 @@ jobs:
         sed -i 's/CONFIG_KERNEL_IPV6_SUBTREES=y/CONFIG_KERNEL_IPV6_SUBTREES=n/g' defconfig
         sed -i 's/CONFIG_KERNEL_IPV6_MROUTE=y/CONFIG_KERNEL_IPV6_MROUTE=n/g' defconfig
         sed -i 's/CONFIG_IPV6=y/CONFIG_IPV6=n/g' defconfig
+        #del
+        sed -i 's/CONFIG_PACKAGE_kmod-ip6tables=y/CONFIG_PACKAGE_kmod-ip6tables=n/g' defconfig
+        sed -i 's/CONFIG_PACKAGE_kmod-nf-ipt6=y/CONFIG_PACKAGE_kmod-nf-ipt6=n/g' defconfig
+        sed -i 's/CONFIG_PACKAGE_libip6tc=y//CONFIG_PACKAGE_libip6tc=n/g' defconfig
+        sed -i 's/CONFIG_PACKAGE_odhcp6c=y/CONFIG_PACKAGE_odhcp6c=n/g' defconfig
+        sed -i 's/CONFIG_PACKAGE_odhcpd-ipv6only=y/CONFIG_PACKAGE_odhcpd-ipv6only=n/g' defconfig
+        sed -i 's/CONFIG_PACKAGE_luci-proto-ipv6=y/CONFIG_PACKAGE_luci-proto-ipv6=n/g' defconfig
         cd openwrt
         sed -i '/infinityfreedom/s/^\(.*\)$/#\1/' feeds.conf.default
         sed -i '/homeclash/s/^\(.*\)$/#\1/' feeds.conf.default
