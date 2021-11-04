@@ -59,6 +59,12 @@ jobs:
       run: |
         sed -i '/subconverter/s/^\(.*\)$/#\1/' defconfig
         sed -i '/subweb/s/^\(.*\)$/#\1/' defconfig
+        #disable ipv6
+        sed -i 's/CONFIG_KERNEL_IPV6=y/CONFIG_KERNEL_IPV6=n/g' defconfig
+        sed -i 's/CONFIG_KERNEL_IPV6_MULTIPLE_TABLES=y/CONFIG_KERNEL_IPV6_MULTIPLE_TABLES=n/g' defconfig
+        sed -i 's/CONFIG_KERNEL_IPV6_SUBTREES=y/CONFIG_KERNEL_IPV6_SUBTREES=n/g' defconfig
+        sed -i 's/CONFIG_KERNEL_IPV6_MROUTE=y/CONFIG_KERNEL_IPV6_MROUTE=n/g' defconfig
+        sed -i 's/CONFIG_IPV6=y/CONFIG_IPV6=n/g' defconfig
         cd openwrt
         sed -i '/infinityfreedom/s/^\(.*\)$/#\1/' feeds.conf.default
         sed -i '/homeclash/s/^\(.*\)$/#\1/' feeds.conf.default
