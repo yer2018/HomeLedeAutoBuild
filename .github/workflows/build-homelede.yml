@@ -69,7 +69,7 @@ jobs:
         #del
         sed -i 's/CONFIG_PACKAGE_kmod-ip6tables=y/CONFIG_PACKAGE_kmod-ip6tables=n/g' defconfig
         sed -i 's/CONFIG_PACKAGE_kmod-nf-ipt6=y/CONFIG_PACKAGE_kmod-nf-ipt6=n/g' defconfig
-        sed -i 's/CONFIG_PACKAGE_libip6tc=y//CONFIG_PACKAGE_libip6tc=n/g' defconfig
+        sed -i 's/CONFIG_PACKAGE_libip6tc=y/CONFIG_PACKAGE_libip6tc=n/g' defconfig
         sed -i 's/CONFIG_PACKAGE_odhcp6c=y/CONFIG_PACKAGE_odhcp6c=n/g' defconfig
         sed -i 's/CONFIG_PACKAGE_odhcpd-ipv6only=y/CONFIG_PACKAGE_odhcpd-ipv6only=n/g' defconfig
         sed -i 's/CONFIG_PACKAGE_luci-proto-ipv6=y/CONFIG_PACKAGE_luci-proto-ipv6=n/g' defconfig
