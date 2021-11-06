@@ -57,9 +57,6 @@ jobs:
 
     - name: Prepare feeds
       run: |
-        #DIY
-        #sed -i '/subconverter/s/^\(.*\)$/#\1/' defconfig
-        #sed -i '/subweb/s/^\(.*\)$/#\1/' defconfig
         cd openwrt
         sed -i '/infinityfreedom/s/^\(.*\)$/#\1/' feeds.conf.default
         sed -i '/homeclash/s/^\(.*\)$/#\1/' feeds.conf.default
@@ -82,7 +79,7 @@ jobs:
       id: package
       run: |
         cd openwrt
-        make download -j8
+        make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
