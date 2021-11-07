@@ -58,6 +58,8 @@ jobs:
     - name: Prepare feeds
       run: |
         cd openwrt
+        sed -i '/subconverter/s/^\(.*\)$/#\1/' defconfig
+        sed -i '/subweb/s/^\(.*\)$/#\1/' defconfig
         sed -i '/infinityfreedom/s/^\(.*\)$/#\1/' feeds.conf.default
         sed -i '/homeclash/s/^\(.*\)$/#\1/' feeds.conf.default
         sed -i '/strongswanInDocker/s/^\(.*\)$/#\1/' feeds.conf.default
