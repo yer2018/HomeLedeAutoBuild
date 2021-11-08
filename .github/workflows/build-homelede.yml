@@ -64,6 +64,8 @@ jobs:
         sed -i '/infinityfreedom/s/^\(.*\)$/#\1/' feeds.conf.default
         sed -i '/homeclash/s/^\(.*\)$/#\1/' feeds.conf.default
         sed -i '/strongswanInDocker/s/^\(.*\)$/#\1/' feeds.conf.default
+        #disable IPv6
+        sed -i 's/ +IPV6:libip6tc//g' package/network/utils/iptables/Makefile
         ./prepareCompile.sh
 
     - name: Load custom configuration
