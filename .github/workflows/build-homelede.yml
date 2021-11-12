@@ -58,8 +58,8 @@ jobs:
     - name: Prepare feeds
       run: |
         #DIY
-        sed -i '/subconverter/s/^\(.*\)$/#\1/' defconfig
-        sed -i '/subweb/s/^\(.*\)$/#\1/' defconfig
+        #sed -i '/subconverter/s/^\(.*\)$/#\1/' defconfig
+        #sed -i '/subweb/s/^\(.*\)$/#\1/' defconfig
         cd openwrt
         sed -i '/infinityfreedom/s/^\(.*\)$/#\1/' feeds.conf.default
         sed -i '/homeclash/s/^\(.*\)$/#\1/' feeds.conf.default
