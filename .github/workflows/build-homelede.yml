@@ -58,12 +58,13 @@ jobs:
     - name: Prepare feeds
       run: |
         #DIY
-        #sed -i '/subconverter/s/^\(.*\)$/#\1/' defconfig
-        #sed -i '/subweb/s/^\(.*\)$/#\1/' defconfig
+        sed -i '/subconverter/s/^\(.*\)$/#\1/' defconfig
+        sed -i '/subweb/s/^\(.*\)$/#\1/' defconfig
         cd openwrt
         sed -i '/infinityfreedom/s/^\(.*\)$/#\1/' feeds.conf.default
         sed -i '/homeclash/s/^\(.*\)$/#\1/' feeds.conf.default
         sed -i '/strongswanInDocker/s/^\(.*\)$/#\1/' feeds.conf.default
+        sed -i 's/homelede\/openwrt-passwall/xiaorouji\/openwrt-passwall/g' feeds.conf.default
         #disable IPv6
         #sed -i 's/ +IPV6:libip6tc//g' package/network/utils/iptables/Makefile
         #sed -i 's/ +IPV6:libip6tc//g' package/network/config/firewall/Makefile
