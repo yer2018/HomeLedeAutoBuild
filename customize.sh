@@ -29,6 +29,6 @@ sed -i '32a sed -i "s/openwrt.org/www.baidu.com/g" /etc/config/luci'  package/le
 sed -i '34a cp /etc/rc.local /etc/rc.local.bak' package/lean/default-settings/files/zzz-default-settings
 sed -i '35a sed -i "2a /etc/init.d/odhcpd disable" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
 sed -i '36a sed -i "3a /etc/init.d/led disable" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
-sed -i '37a sed -i "4a /etc/init.d/shortcut-fe disable" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
+#sed -i '37a sed -i "4a /etc/init.d/shortcut-fe disable" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
 #sed -i '38a sed -i "5a wget https://cdn.jsdelivr.net/gh/yer2018/HomeLedeAutoBuild@master/AdGuardHome.yaml -O /etc/AdGuardHome/AdGuardHome.yaml" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
 sed -i '39a sed -i "6a cp -f /etc/rc.local.bak /etc/rc.local" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
