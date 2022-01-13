@@ -32,9 +32,9 @@ sed -i 's/ssid=OpenWrt/ssid=Phicomm_n1/g' package/kernel/mac80211/files/lib/wifi
 #sed -i '37a sed -i "4a /etc/init.d/shortcut-fe disable" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
 #sed -i '38a sed -i "5a wget https://cdn.jsdelivr.net/gh/yer2018/HomeLedeAutoBuild@master/AdGuardHome.yaml -O /etc/AdGuardHome/AdGuardHome.yaml" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
 #sed -i '39a sed -i "6a cp -f /etc/rc.local.bak /etc/rc.local" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
-#sed -i "/exit 0//" package/lean/default-settings/files/zzz-default-settings
+sed -i "/exit 0//" package/lean/default-settings/files/zzz-default-settings
 echo "sed -i s/openwrt.org/www.baidu.com/g /etc/config/luci" >> package/lean/default-settings/files/zzz-default-settings
-#echo "sed -i '2a /etc/init.d/odhcpd disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
-#echo "sed -i '3a /etc/init.d/led disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '2a /etc/init.d/odhcpd disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '3a /etc/init.d/led disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 
-#echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
+echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
