@@ -113,9 +113,9 @@ jobs:
         types: s905d
         kernel-version: latest+
         whoami: Ye
-        out: openwrt/bin/targets/*/*/
+        out: $GITHUB_WORKSPACE/openwrt/bin/targets/*/*/
         sub-name: openwrt_s905d_n1.img.gz
-        openwrt-path: openwrt/bin/targets/*/*/openwrt-armvirt-64-default-rootfs.tar.gz 
+        openwrt-path: $GITHUB_WORKSPACE/openwrt/bin/targets/*/*/openwrt-armvirt-64-default-rootfs.tar.gz 
    
 
     - name: Organize files
