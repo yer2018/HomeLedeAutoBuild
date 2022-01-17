@@ -32,9 +32,11 @@ sed -i '40a echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDs1m4Ts+ZDF0qEu0kNypyQ//
 #sed -i '37a sed -i "4a /etc/init.d/shortcut-fe disable" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
 #sed -i '38a sed -i "5a wget https://cdn.jsdelivr.net/gh/yer2018/HomeLedeAutoBuild@master/AdGuardHome.yaml -O /etc/AdGuardHome/AdGuardHome.yaml" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
 #sed -i '39a sed -i "6a cp -f /etc/rc.local.bak /etc/rc.local" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
-sed -i "/exit 0//" package/lean/default-settings/files/zzz-default-settings
+sed -i "/exit 0/d" package/lean/default-settings/files/zzz-default-settings
 echo "sed -i s/openwrt.org/www.baidu.com/g /etc/config/luci" >> package/lean/default-settings/files/zzz-default-settings
-echo "sed -i '2a /etc/init.d/odhcpd disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
-echo "sed -i '3a /etc/init.d/led disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
-
+#echo "sed -i '2a /etc/init.d/odhcpd disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '4a /etc/init.d/led disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '5a /etc/init.d/hd-idle disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '6a /etc/init.d/haproxy disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '7a mount --make-shared /mnt/mmcblk2p4/" >> package/lean/default-settings/files/zzz-default-settings
 echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
