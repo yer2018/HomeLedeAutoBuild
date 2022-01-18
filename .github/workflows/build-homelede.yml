@@ -31,6 +31,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: true
   UPLOAD_WETRANSFER: false
+  AUTO_OPENWRT: false
   TZ: Asia/Shanghai
 
 jobs:
@@ -113,6 +114,7 @@ jobs:
 
     - name: Package OpenWrt with flippy script(+)     
       uses: mingxiaoyu/package-flippy-openwrt@main
+      if: env.AUTO_OPENWRT == 'true'
       with:
         types: s905d
         kernel-version: latest+
@@ -127,8 +129,9 @@ jobs:
         cd openwrt/bin/targets/*/*
         #rm -rf `ls | grep -v "openwrt-x86-64-generic-squashfs-combined-efi.img.gz"`
         #[ -e openwrt-x86-64-generic-squashfs-combined-efi.img.gz ] && mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz HomeLEDE_`date +%Y%m%d`.img.gz
-        rm -rf `ls | grep -v "s905d_n1"
+        #rm -rf `ls | grep -v "s905d_n1"`
         #rm -rf packages openwrt-armvirt-64-default-rootfs.tar.gz
+        rm -rf `ls | grep -v "openwrt-armvirt-64-default-rootfs.tar.gz"`
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
     - name: Upload firmware directory
