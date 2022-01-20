@@ -44,5 +44,5 @@ echo "sed -i s/openwrt.org/www.baidu.com/g /etc/config/luci" >> package/lean/def
 echo "sed -i '4a /etc/init.d/led disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 echo "sed -i '5a /etc/init.d/hd-idle disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 echo "sed -i '6a /etc/init.d/haproxy disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
-echo "sed -i '7a mount --make-shared /mnt/mmcblk2p4/ /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '7a mount --make-shared /mnt/mmcblk2p4/' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
