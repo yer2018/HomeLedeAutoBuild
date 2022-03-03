@@ -1,6 +1,6 @@
 #!/bin/bash
 # Modify default IP
-sed -i 's/192.168.1.1/10.10.10.254/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/10.10.10.100/g' package/base-files/files/bin/config_generate
 # Modify default Theme
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile 
 \cp -rf ../bg1.jpg feeds/xiaoqingfeng/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
