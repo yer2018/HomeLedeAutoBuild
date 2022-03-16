@@ -70,7 +70,7 @@ jobs:
         echo "src-git amlogic https://github.com/ophub/luci-app-amlogic.git" >> feeds.conf.default
         sed -i '35a ./feeds/luci/themes/luci-theme-argon' prepareCompile.sh
         ./prepareCompile.sh
-        wget https://raw.githubusercontent.com/NobyDa/Script/raw/master/JD-DailyBonus/JD_DailyBonus.js -O feeds/xiaoqingfeng/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/JD_DailyBonus.js
+        wget https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js -O feeds/xiaoqingfeng/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/JD_DailyBonus.js
 
     - name: Load custom configuration
       run: |
