@@ -114,15 +114,52 @@ jobs:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
 
-    - name: Package OpenWrt with flippy script(+)     
-      uses: mingxiaoyu/package-flippy-openwrt@main
+    - name: 打包内核
+      uses: unifreq/openwrt_packit@master
       if: env.AUTO_OPENWRT == 'true'
+      env:
+        WHOAMI: Ye
+        OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
+        PACKAGE_SOC: s905d
+       # KERNEL_AUTO_LATEST: false
+        KERNEL_REPO_URL: https://github.com/ophub/kernel/tree/main/pub/stable
+        KERNEL_VERSION_NAME: 5.4.185
+
+    - name: 发布固件
+      uses: ncipollo/release-action@v1
       with:
-        types: s905d
-        kernel-version: latest+
-        whoami: Ye
-        out: openwrt/bin/targets/armvirt/64
-        openwrt-path: openwrt/bin/targets/armvirt/64
+        tag: openwrt_armvirt_v8_${{ env.PACKAGED_OUTPUTDATE }}
+        artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
+        allowUpdates: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+        body: |
+          ### **适用于Amlogic盒子的OpenWrt固件**
+          * **固件信息：**
+          默认IP: 10.10.10.100
+          默认用户名: root
+          默认密码: password
+          * **更新说明：**
+          目前已集成大部分常用插件！
+          * **N1云编译OP固件互助交流：**
+          https://t.me/OpenWrt_n1
+    - name: 清理Actions空间
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          keep_minimum_runs: 0
+          retain_days: 7
+          #retain_days: ${{ github.event.inputs.action_days }}
+    
+    - name: 删除多余releases
+      uses: dev-drprasad/delete-older-releases@master
+      with:
+        repo: ${{ github.repository }}
+        keep_latest: 5
+        #keep_latest: ${{ github.event.inputs.rele }}
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Organize files
       id: organize
