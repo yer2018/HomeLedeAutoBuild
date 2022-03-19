@@ -41,18 +41,9 @@ sed -i '40a echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDs1m4Ts+ZDF0qEu0kNypyQ//
 #sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #echo '修改默认WIFI名称'
 #sed -i 's/ssid=OpenWrt/ssid=Phicomm_n1/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-# Modify network diagnostics
-#sed -i '34a sed -i "s/<%=ping_host%>/www.baidu.com/g" /usr/lib/lua/luci/view/admin_network/diagnostics.htm' package/lean/default-settings/files/zzz-default-settings
-#sed -i '35a sed -i "s/<%=route_host%>/www.baidu.com/g" /usr/lib/lua/luci/view/admin_network/diagnostics.htm' package/lean/default-settings/files/zzz-default-settings
-#sed -i '36a sed -i "s/<%=dns_host%>/www.baidu.com/g" /usr/lib/lua/luci/view/admin_network/diagnostics.htm' package/lean/default-settings/files/zzz-default-settings
-#sed -i '32a sed -i "s/openwrt.org/www.baidu.com/g" /etc/config/luci'  package/lean/default-settings/files/zzz-default-settings
+
 # Disable
-#sed -i '34a cp /etc/rc.local /etc/rc.local.bak' package/lean/default-settings/files/zzz-default-settings
-#sed -i '35a sed -i "2a /etc/init.d/odhcpd disable" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
-#sed -i '36a sed -i "3a /etc/init.d/led disable" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
-#sed -i '37a sed -i "4a /etc/init.d/shortcut-fe disable" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
-#sed -i '38a sed -i "5a wget https://cdn.jsdelivr.net/gh/yer2018/HomeLedeAutoBuild@master/AdGuardHome.yaml -O /etc/AdGuardHome/AdGuardHome.yaml" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
-#sed -i '39a sed -i "6a cp -f /etc/rc.local.bak /etc/rc.local" /etc/rc.local' package/lean/default-settings/files/zzz-default-settings
+
 sed -i "/exit 0/d" package/lean/default-settings/files/zzz-default-settings
 echo "sed -i s/openwrt.org/www.baidu.com/g /etc/config/luci" >> package/lean/default-settings/files/zzz-default-settings
 #echo "sed -i '2a /etc/init.d/odhcpd disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
