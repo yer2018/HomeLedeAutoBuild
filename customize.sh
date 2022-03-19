@@ -1,5 +1,21 @@
 #!/bin/bash
+#DIY
+wget https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js -O feeds/xiaoqingfeng/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/JD_DailyBonus.js
 # Modify default IP
+cat > package/base-files/files/etc/networkip << -EOF
+uci set network.lan.ipaddr='10.10.10.100'                                    # IPv4 地址(openwrt后台地址)
+uci set network.lan.netmask='255.255.255.0'                                 # IPv4 子网掩码
+uci set network.lan.gateway='10.10.10.2'                                   # IPv4 网关
+uci set network.lan.broadcast=''                               # IPv4 广播
+uci set network.lan.dns='127.0.0.1'                         # DNS(多个DNS要用空格分开)
+uci set network.lan.delegate='0'                                            # 去掉LAN口使用内置的 IPv6 管理
+uci commit network                                                          # 不要删除跟注释,除非上面全部删除或注释掉了
+uci set dhcp.lan.ignore='1'                                                 # 关闭DHCP功能
+uci commit dhcp                                                             # 跟‘关闭DHCP功能’联动,同时启用或者删除跟注释
+uci set system.@system[0].hostname='Phicomm-N1'                             # 修改主机名称为Phicomm-N1
+sed -i 's/\/bin\/login/\/bin\/login -f root/' /etc/config/ttyd             # 设置ttyd免帐号登录，如若开启，进入OPENWRT后可能要重启一次才生效
+EOF
+
 sed -i 's/192.168.1.1/10.10.10.100/g' package/base-files/files/bin/config_generate
 # Modify default Theme
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile 
