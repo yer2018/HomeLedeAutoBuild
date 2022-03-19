@@ -13,7 +13,6 @@ uci commit network                                                          # �
 uci set dhcp.lan.ignore='1'                                                 # 关闭DHCP功能
 uci commit dhcp                                                             # 跟‘关闭DHCP功能’联动,同时启用或者删除跟注释
 uci set system.@system[0].hostname='Phicomm-N1'                             # 修改主机名称为Phicomm-N1
-sed -i 's/\/bin\/login/\/bin\/login -f root/' /etc/config/ttyd             # 设置ttyd免帐号登录，如若开启，进入OPENWRT后可能要重启一次才生效
 EOF
 
 sed -i 's/192.168.1.1/10.10.10.100/g' package/base-files/files/bin/config_generate
@@ -61,4 +60,6 @@ echo "sed -i '4a /etc/init.d/led disable' /etc/rc.local" >> package/lean/default
 echo "sed -i '5a /etc/init.d/hd-idle disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 echo "sed -i '6a /etc/init.d/haproxy disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 #echo "sed -i '7a mount --make-shared /mnt/mmcblk2p4/' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i 's/\/bin\/login/\/bin\/login -f root/' /etc/config/ttyd" >> package/lean/default-settings/files/zzz-default-settings            # 设置ttyd免帐号登录，如若开启，进入OPENWRT后可能要重启一次才生效
 echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
+
