@@ -2,7 +2,7 @@
 #DIY
 wget https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js -O feeds/xiaoqingfeng/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/JD_DailyBonus.js
 # Modify default IP
-cat > package/base-files/files/etc/networkip << -EOF
+cat >package/base-files/files/etc/networkip <<-EOF
 uci set network.lan.ipaddr='10.10.10.100'                                    # IPv4 地址(openwrt后台地址)
 uci set network.lan.netmask='255.255.255.0'                                 # IPv4 子网掩码
 uci set network.lan.gateway='10.10.10.2'                                   # IPv4 网关
