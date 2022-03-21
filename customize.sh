@@ -1,21 +1,11 @@
 #!/bin/bash
+
 #DIY
 wget https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js -O feeds/xiaoqingfeng/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/JD_DailyBonus.js
-# Modify default IP
-cat >package/base-files/files/etc/networkip <<-EOF
-uci set network.lan.ipaddr='10.10.10.100'                                    # IPv4 地址(openwrt后台地址)
-uci set network.lan.netmask='255.255.255.0'                                 # IPv4 子网掩码
-uci set network.lan.gateway='10.10.10.2'                                   # IPv4 网关
-uci set network.lan.broadcast='10.10.10.255'                               # IPv4 广播
-uci set network.lan.dns='127.0.0.1'                         # DNS(多个DNS要用空格分开)
-uci set network.lan.delegate='0'                                            # 去掉LAN口使用内置的 IPv6 管理
-uci commit network                                                          # 不要删除跟注释,除非上面全部删除或注释掉了
-uci set dhcp.lan.ignore='1'                                                 # 关闭DHCP功能
-uci commit dhcp                                                             # 跟‘关闭DHCP功能’联动,同时启用或者删除跟注释
-uci set system.@system[0].hostname='Phicomm-N1'                             # 修改主机名称为Phicomm-N1
-EOF
 
+# Modify default IP
 sed -i 's/192.168.1.1/10.10.10.100/g' package/base-files/files/bin/config_generate
+
 # Modify default Theme
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile 
 \cp -rf ../bg1.jpg feeds/xiaoqingfeng/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
@@ -26,7 +16,7 @@ sed -i 's/margin-left: 5%;/margin-left: 0%;/g' feeds/xiaoqingfeng/luci-theme-arg
 sed -i "s/'UTC'/'CST-8'\n   set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 
 # firewall custom
-echo "iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE" >> package/network/config/firewall/files/firewall.user
+# echo "iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE" >> package/network/config/firewall/files/firewall.user
 # Modify default HostName
 sed -i 's/OpenWrt/Phicomm-N1/g' package/base-files/files/bin/config_generate
 # Modify default PassWord
