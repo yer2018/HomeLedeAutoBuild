@@ -16,8 +16,8 @@ on:
       - master
     paths:
       - 'defconfig'
-  schedule:
-    - cron: 0 12 * * *
+  #schedule:
+    #- cron: 0 12 * * *
   watch:
     types: started
 
@@ -68,7 +68,6 @@ jobs:
         sed -i '/homeclash/s/^\(.*\)$/#\1/' feeds.conf.default
         sed -i '/strongswanInDocker/s/^\(.*\)$/#\1/' feeds.conf.default
         echo "src-git amlogic https://github.com/ophub/luci-app-amlogic.git" >> feeds.conf.default
-        sed -i '35a ./feeds/luci/themes/luci-theme-argon' prepareCompile.sh
         ./prepareCompile.sh
 
     - name: Load custom configuration
