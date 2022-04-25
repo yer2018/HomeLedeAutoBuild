@@ -1,4 +1,4 @@
-bind_host: 10.10.10.100
+bind_host: 10.10.10.253
 bind_port: 3000
 beta_bind_port: 0
 users:
