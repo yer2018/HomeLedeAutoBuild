@@ -44,3 +44,8 @@ echo "sed -i '6a /etc/init.d/haproxy disable' /etc/rc.local" >> package/lean/def
 echo "sed -i 's/\/bin\/login/\/bin\/login -f root/' /etc/config/ttyd" >> package/lean/default-settings/files/zzz-default-settings            # 设置ttyd免帐号登录，如若开启，进入OPENWRT后可能要重启一次才生效
 echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
 
+#crontabs
+mkdir -p package/base-files/files/etc/crontabs/
+echo "0 6 1 * * /etc/AdGuardHome/update.sh &> /dev/null" >> package/base-files/files/etc/crontabs/root
+echo "0 0 * * * sh /usr/share/jd-dailybonus/newapp.sh -s" >> package/base-files/files/etc/crontabs/root
+
