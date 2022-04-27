@@ -36,6 +36,8 @@ sed -i '40a echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQClNPo83GB5AiEmDTvY4gQEuT
 
 sed -i "/exit 0/d" package/lean/default-settings/files/zzz-default-settings
 echo "sed -i s/openwrt.org/www.baidu.com/g /etc/config/luci" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '3a rm -rf /etc/docker/daemon.json' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '3a rm -rf /tmp/dockerd/daemon.json' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 echo "sed -i '3a /etc/init.d/odhcpd disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 echo "sed -i '3a /etc/init.d/led disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 echo "sed -i '3a /etc/init.d/hd-idle disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
