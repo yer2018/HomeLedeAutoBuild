@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #DIY
-wget https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js -O feeds/xiaoqingfeng/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/JD_DailyBonus.js
+#wget https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js -O feeds/xiaoqingfeng/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/JD_DailyBonus.js
 
 # Modify default IP
 sed -i 's/192.168.1.1/10.10.10.253/g' package/base-files/files/bin/config_generate
@@ -16,7 +16,7 @@ sed -i 's/margin-left: 5%;/margin-left: 0%;/g' feeds/xiaoqingfeng/luci-theme-arg
 sed -i "s/'UTC'/'CST-8'\n   set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 
 # firewall custom
-echo "#iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE" >> package/network/config/firewall/files/firewall.user
+echo "#iptables -t nat -I POSTROUTING -o br-lan -j MASQUERADE" >> package/network/config/firewall/files/firewall.user
 # Modify default HostName
 sed -i 's/OpenWrt/HomeLede/g' package/base-files/files/bin/config_generate
 # Modify default PassWord
@@ -49,5 +49,5 @@ echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
 #crontabs
 mkdir -p package/base-files/files/etc/crontabs/
 echo "0 6 1 * * /etc/AdGuardHome/update.sh &> /dev/null" >> package/base-files/files/etc/crontabs/root
-echo "0 0 * * * sh /usr/share/jd-dailybonus/newapp.sh -s" >> package/base-files/files/etc/crontabs/root
+#echo "0 0 * * * sh /usr/share/jd-dailybonus/newapp.sh -s" >> package/base-files/files/etc/crontabs/root
 
