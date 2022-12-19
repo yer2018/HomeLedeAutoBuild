@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #DIY
-#wget https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js -O feeds/xiaoqingfeng/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/JD_DailyBonus.js
 
 # Modify default IP
 sed -i 's/192.168.1.1/10.10.10.253/g' package/base-files/files/bin/config_generate
@@ -11,6 +10,8 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/M
 \cp -rf ../bg1.jpg feeds/xiaoqingfeng/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 sed -i 's/width: 420px;/width: 330px;/g' feeds/xiaoqingfeng/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
 sed -i 's/margin-left: 5%;/margin-left: 0%;/g' feeds/xiaoqingfeng/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+sed -i 's/  --blur-radius-dark: 10px;/  --blur-radius-dark: 0px;/g' feeds/xiaoqingfeng/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+sed -i 's/  --blur-opacity-dark: 0.5;/  --blur-opacity-dark: 0;/g' feeds/xiaoqingfeng/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
 
 # Modify default Time zone
 sed -i "s/'UTC'/'CST-8'\n   set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
@@ -22,7 +23,7 @@ sed -i 's/OpenWrt/HomeLede/g' package/base-files/files/bin/config_generate
 # Modify default PassWord
 sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:$1$a87b3JDA$O5S5vtQFGIL9deGI2KeBg1:0:0:99999:7:::/g' package/lean/default-settings/files/zzz-default-settings
 # Add ssh-rsa
-sed -i '40a echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQClNPo83GB5AiEmDTvY4gQEuTHVQ5qqDyRIa8RIus6D/UL5CNWx6+0JO2Vtigsxiq5Y8JyoLBW0Cs2oTWGLOQmGOf6S2suRzTv+UZotvCzFqnWHa6uwdQnEuYPLhR4jQs1rr+reBIHX8fZPda5KUBzfyFwHqANMfCLi3+KC3SY+BxcqmWY0d73oXriKUaKsBUC0cO58k5MbUuXQUdhd4K+MbEkJesO5vlOxQ0GA3JGiGYiZhv6M3f6cRDKTpralcFAbuvjwuk7+wM5hWTO2pFxk6He+W1bY7qrn2QNvIPwQv95aQQp/NekbGscJHSJrj5vTIewkOwdTDjUkeEoRevsV9LlJfQmfHcAlgdDRFQ+SUdjbanrKlq8DNMqYqw8si0EiIbIoftn/2ST9shV/CWImb/SV7zUk2fKcvPUfP6OId3KmG7eaVRB9g3O2sF13PvUQuyaiX+nvZtWBoxBMtbZ58P+2RVM7iYLI2llBTWtdXSzen5LoqS4rLP65x+j2VZc= ye@YedeMacBook-Pro.local" > /etc/dropbear/authorized_keys' package/lean/default-settings/files/zzz-default-settings
+#sed -i '40a echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQClNPo83GB5AiEmDTvY4gQEuTHVQ5qqDyRIa8RIus6D/UL5CNWx6+0JO2Vtigsxiq5Y8JyoLBW0Cs2oTWGLOQmGOf6S2suRzTv+UZotvCzFqnWHa6uwdQnEuYPLhR4jQs1rr+reBIHX8fZPda5KUBzfyFwHqANMfCLi3+KC3SY+BxcqmWY0d73oXriKUaKsBUC0cO58k5MbUuXQUdhd4K+MbEkJesO5vlOxQ0GA3JGiGYiZhv6M3f6cRDKTpralcFAbuvjwuk7+wM5hWTO2pFxk6He+W1bY7qrn2QNvIPwQv95aQQp/NekbGscJHSJrj5vTIewkOwdTDjUkeEoRevsV9LlJfQmfHcAlgdDRFQ+SUdjbanrKlq8DNMqYqw8si0EiIbIoftn/2ST9shV/CWImb/SV7zUk2fKcvPUfP6OId3KmG7eaVRB9g3O2sF13PvUQuyaiX+nvZtWBoxBMtbZ58P+2RVM7iYLI2llBTWtdXSzen5LoqS4rLP65x+j2VZc= ye@YedeMacBook-Pro.local" > /etc/dropbear/authorized_keys' package/lean/default-settings/files/zzz-default-settings
 # Modify default Shell
 #sed -i '43a sed -i "s/\\\/bin\\\/ash/\\\/usr\\\/bin\\\/zsh/g" /etc/passwd' package/lean/default-settings/files/zzz-default-settings
 # Modify build date
