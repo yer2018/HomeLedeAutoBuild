@@ -1,6 +1,14 @@
 #!/bin/bash
 
 #DIY
+## 解除系统限制
+ulimit -u 10000
+ulimit -n 4096
+ulimit -d unlimited
+ulimit -m unlimited
+ulimit -s unlimited
+ulimit -t unlimited
+ulimit -v unlimited
 
 # Modify default IP
 sed -i 's/192.168.1.1/10.10.10.253/g' package/base-files/files/bin/config_generate
@@ -37,8 +45,6 @@ sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:$1$a87b3JD
 
 sed -i "/exit 0/d" package/lean/default-settings/files/zzz-default-settings
 echo "sed -i s/openwrt.org/www.baidu.com/g /etc/config/luci" >> package/lean/default-settings/files/zzz-default-settings
-echo "sed -i '3a rm -rf /etc/docker/daemon.json' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
-echo "sed -i '3a rm -rf /tmp/dockerd/daemon.json' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 echo "sed -i '3a /etc/init.d/odhcpd disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 echo "sed -i '3a /etc/init.d/led disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 echo "sed -i '3a /etc/init.d/hd-idle disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
@@ -50,5 +56,5 @@ echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
 #crontabs
 mkdir -p package/base-files/files/etc/crontabs/
 echo "0 6 1 * * /etc/AdGuardHome/update.sh &> /dev/null" >> package/base-files/files/etc/crontabs/root
-#echo "0 0 * * * sh /usr/share/jd-dailybonus/newapp.sh -s" >> package/base-files/files/etc/crontabs/root
+
 
