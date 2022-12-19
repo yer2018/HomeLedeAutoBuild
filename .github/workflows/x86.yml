@@ -70,11 +70,9 @@ jobs:
         # sudo rm -rf /etc/mysql /etc/php /swapfile
 
     - name: 克隆源码
-      working-directory: /workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd $GITHUB_WORKSPACE/files/etc/AdGuardHome
         sudo chmod a+x startAdGuardHome.sh
         sudo chmod a+x update.sh
@@ -83,7 +81,6 @@ jobs:
       uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'false'
-        mixkey: 'amd64'
         prefix: ${{ github.workspace }}/openwrt
 
     - name: 加载自定义feeds
@@ -99,7 +96,8 @@ jobs:
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         sudo chmod a+x $DIY_SH
-        cd openwrt
+        cd openwrt && ls -l
+        ls -l ../
         ../$DIY_SH
 
     - name: SSH 远程链接
