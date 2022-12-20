@@ -112,6 +112,7 @@ jobs:
       run: |
         cd openwrt/dl && ls -l
         [ -e binutils-2.35.2.tar.xz ] && rm binutils-2.35.2.tar.xz && wget https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz
+        ls -l
 
     - name: 编译固件
       id: compile
