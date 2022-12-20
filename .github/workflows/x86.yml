@@ -108,6 +108,12 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
+    - name: binutil
+      run: |
+        cd openwrt/dl && ls -l
+        [ -e binutils-2.37.tar.xz ] && rm binutils-2.37.tar.xz
+        wget https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz
+
     - name: 编译固件
       id: compile
       run: |
