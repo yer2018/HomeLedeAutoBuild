@@ -113,6 +113,7 @@ jobs:
         cd openwrt/dl && ls -l binutils-*
         [ -e binutils-2.35.2.tar.xz ] && rm binutils-2.35.2.tar.xz && wget https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.xz
         ls -l binutils-*
+        cd ..
         make download -j8
 
     - name: 编译固件
