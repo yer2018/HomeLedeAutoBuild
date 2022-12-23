@@ -1,15 +1,5 @@
 #!/bin/bash
 
-#DIY
-## 解除系统限制
-ulimit -u 10000
-ulimit -n 4096
-ulimit -d unlimited
-ulimit -m unlimited
-ulimit -s unlimited
-ulimit -t unlimited
-ulimit -v unlimited
-
 # Modify default IP
 sed -i 's/192.168.1.1/10.10.10.253/g' package/base-files/files/bin/config_generate
 
