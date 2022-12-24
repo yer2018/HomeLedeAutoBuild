@@ -20,7 +20,7 @@ echo "#iptables -t nat -I POSTROUTING -o br-lan -j MASQUERADE" >> package/networ
 sed -i 's/OpenWrt/HomeLede/g' package/base-files/files/bin/config_generate
 
 rm -rf package/lean/default-settings/files/zzz-default-settings
-cat > package/lean/default-settings/files/zzz-default-settings << EOF
+cat > package/lean/default-settings/files/zzz-default-settings << EF
 #!/bin/sh
 
 uci set luci.main.lang=zh_cn
@@ -122,7 +122,7 @@ rm -rf /tmp/luci-modulecache/
 rm -f /tmp/luci-indexcache
 
 exit 0
-EOF
+EF
 
 # Modify default PassWord
 sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:$1$a87b3JDA$O5S5vtQFGIL9deGI2KeBg1:0:0:99999:7:::/g' package/lean/default-settings/files/zzz-default-settings
@@ -139,15 +139,15 @@ sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:$1$a87b3JD
 
 # Disable
 
-#sed -i "/exit 0/d" package/lean/default-settings/files/zzz-default-settings
-#echo "sed -i s/openwrt.org/www.baidu.com/g /etc/config/luci" >> package/lean/default-settings/files/zzz-default-settings
-#echo "sed -i '3a /etc/init.d/odhcpd disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
-#echo "sed -i '3a /etc/init.d/led disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
-#echo "sed -i '3a /etc/init.d/hd-idle disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
-#echo "sed -i '3a /etc/init.d/haproxy disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+sed -i "/exit 0/d" package/lean/default-settings/files/zzz-default-settings
+echo "sed -i s/openwrt.org/www.baidu.com/g /etc/config/luci" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '3a /etc/init.d/odhcpd disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '3a /etc/init.d/led disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '3a /etc/init.d/hd-idle disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i '3a /etc/init.d/haproxy disable' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
 #echo "sed -i '7a mount --make-shared /mnt/mmcblk2p4/' /etc/rc.local" >> package/lean/default-settings/files/zzz-default-settings
-#echo "sed -i 's/\/bin\/login/\/bin\/login -f root/' /etc/config/ttyd" >> package/lean/default-settings/files/zzz-default-settings            # 设置ttyd免帐号登录，如若开启，进入OPENWRT后可能要重启一次才生效
-#echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
+echo "sed -i 's/\/bin\/login/\/bin\/login -f root/' /etc/config/ttyd" >> package/lean/default-settings/files/zzz-default-settings            # 设置ttyd免帐号登录，如若开启，进入OPENWRT后可能要重启一次才生效
+echo "exit 0" >> package/lean/default-settings/files/zzz-default-settings
 
 #crontabs
 mkdir -p package/base-files/files/etc/crontabs/
