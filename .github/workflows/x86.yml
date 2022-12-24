@@ -78,11 +78,11 @@ jobs:
         sudo chmod a+x startAdGuardHome.sh
         sudo chmod a+x update.sh
 
-    - name: 编译工具链缓存
-      uses: klever1988/cachewrtbuild@main
-      with:
-        ccache: 'false'
-        prefix: ${{ github.workspace }}/openwrt
+    #- name: 编译工具链缓存
+      #uses: klever1988/cachewrtbuild@main
+      #with:
+        #ccache: 'false'
+        #prefix: ${{ github.workspace }}/openwrt
 
     - name: 加载自定义feeds
       run: |
