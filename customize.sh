@@ -86,15 +86,15 @@ echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 
 echo 'hsts=0' > /root/.wgetrc
 
-if [ -r /etc/buildmark ]; then
-HV=$(cat /etc/buildmark)
-LV=$(cat /etc/openwrt_release | grep "'R[0-9]\{1,\}.[0-9]\{1,\}.[0-9]\{1,\}'" | sed $'s/\'//g' | cut -d '=' -f 2)
+#if [ -r /etc/buildmark ]; then
+#HV=$(cat /etc/buildmark)
+#LV=$(cat /etc/openwrt_release | grep "'R[0-9]\{1,\}.[0-9]\{1,\}.[0-9]\{1,\}'" | sed $'s/\'//g' | cut -d '=' -f 2)
 #echo $HV $LV
-sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
-echo "DISTRIB_REVISION='$HV based on OpenWrt $LV'" >> /etc/openwrt_release
-sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
-echo "DISTRIB_DESCRIPTION='HomeLede '" >> /etc/openwrt_release
-fi
+#sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
+#echo "DISTRIB_REVISION='$HV based on OpenWrt $LV'" >> /etc/openwrt_release
+#sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
+#echo "DISTRIB_DESCRIPTION='HomeLede '" >> /etc/openwrt_release
+#fi
 
 #sed -i '/REDIRECT --to-ports 53/d' /etc/firewall.user
 
