@@ -82,7 +82,7 @@ jobs:
       uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'false'
-        clean: 'true'
+        clean: 'false'
         prefix: ${{ github.workspace }}/openwrt
 
     - name: 加载自定义feeds
