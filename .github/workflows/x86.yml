@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: 0 12 * * 0
+    - cron: 0 16 * * 0
 
 env:
   REPO_URL: https://github.com/xiaoqingfengATGH/HomeLede.git
@@ -23,7 +23,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout
@@ -111,7 +111,7 @@ jobs:
       run: |
         cd openwrt
         #make defconfig
-        make download -j8
+        make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
         
