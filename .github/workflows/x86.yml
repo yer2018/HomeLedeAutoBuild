@@ -144,12 +144,13 @@ jobs:
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
         cd openwrt/bin/targets/*/*
-        rm -rf packages
-        rm -rf `ls | grep -v "efi"`
         ls
-        [ -e openwrt-x86-64-generic-ext4-combined.vmdk.gz ] && mv openwrt-x86-64-generic-ext4-combined.vmdk.gz HomeLEDE_`date +%Y%m%d`.vmdk.gz
-        [ -e openwrt-x86-64-generic-ext4-combined.img.gz ] && mv openwrt-x86-64-generic-ext4-combined.img.gz HomeLEDE_`date +%Y%m%d`.img.gz
-        [ -e openwrt-x86-64-generic-ext4-combined.qcow2.gz ] && mv openwrt-x86-64-generic-ext4-combined.qcow2.gz HomeLEDE_`date +%Y%m%d`.qcow2.gz
+        rm -rf packages
+        rm -rf `ls | grep -v "squashfs"`
+        ls
+        [ -e openwrt-x86-64-generic-squashfs-combined.vmdk.gz ] && mv openwrt-x86-64-generic-squashfs-combined.vmdk.gz HomeLEDE_`date +%Y%m%d`.vmdk.gz
+        [ -e openwrt-x86-64-generic-squashfs-combined.img.gz ] && mv openwrt-x86-64-generic-squashfs-combined.img.gz HomeLEDE_`date +%Y%m%d`.img.gz
+        [ -e openwrt-x86-64-generic-squashfs-combined.qcow2.gz ] && mv openwrt-x86-64-generic-squashfs-combined.qcow2.gz HomeLEDE_`date +%Y%m%d`.qcow2.gz
         #cd /opt/openwrt_packit/output
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         #echo "$PACKAGED_OUTPUTPATH" >> $GITHUB_ENV
